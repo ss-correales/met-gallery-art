@@ -8,29 +8,42 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
 
- <main class="main">
-    <aside id="barra-lateral">
-        <nav id="lista-departamentos"></nav>
-    </aside>
-    <section id="vista-exposicion">
-        <div id="obra-imagen-contenedor">
-        <img id="obra-imagen" src="" alt="">
-        </div>
-        <div id="obra-info">
-            <p id="obra-titulo"></p>
-            <p id="obra-artista"></p>
-            <p id="obra-fecha"></p>
-            <p id="obra-tecnica"></p>
-        </div>
-        <button id="btn-siguiente">Siguiente obra</button>
-    </section>
- </main>
+    <main class="main">
+        <button id="btn-toggle-sidebar">☰</button>
+
+        <aside id="barra-lateral">
+            <nav id="lista-departamentos"></nav>
+        </aside>
+
+        <section id="vista-departamento" hidden>
+            <h2 id="departamento-titulo"></h2>
+            <div id="grid-miniaturas"></div>
+            <button id="btn-comenzar-expo">Comenzar exposición</button>
+        </section>
+
+        <section id="vista-exposicion">
+            <p id="obra-mensaje"></p>
+            <div id="obra-imagen-contenedor">
+                <img id="obra-imagen" src="" alt="">
+            </div>
+            <div id="obra-info">
+                <p id="obra-titulo"></p>
+                <p id="obra-artista"></p>
+                <p id="obra-fecha"></p>
+                <p id="obra-tecnica"></p>
+            </div>
+            <button id="btn-siguiente">Siguiente obra</button>
+        </section>
+    </main>
 
     <script src="/scripts/app.js"></script>
 </body>
+
 </html>

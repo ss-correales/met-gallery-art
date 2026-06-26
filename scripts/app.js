@@ -50,7 +50,7 @@ function obtenerObraValida(ids) {
     intentarObra(idsBarajados, 0);
 }
 
-function intentarObra(idsBarajados, indice){
+function intentarObra(idsBarajados, indice) {
     if (indice >= idsBarajados.length) {
         console.error('No se encontró obra válida en esta lista.');
         return;
@@ -59,18 +59,18 @@ function intentarObra(idsBarajados, indice){
     const idObra = idsBarajados[indice];
 
     fetch(ApiUrl + '/objects/' + idObra)
-    .then(response => response.json())
-    .then(obra => {
-        if (obra.primaryImage !== '' && obra.artistDisplayName !== ''){
-            mostrarObra(obra);
-        } else {
+        .then(response => response.json())
+        .then(obra => {
+            if (obra.primaryImage !== '' && obra.artistDisplayName !== '') {
+                mostrarObra(obra);
+            } else {
+                setTimeout(() => intentarObra(idsBarajados, indice + 1), 200);
+            }
+        })
+        .catch(error => {
+            console.error('Error con este ID, intentando otro...', error);
             setTimeout(() => intentarObra(idsBarajados, indice + 1), 200);
-        }
-    })
-    .catch(error => {
-        console.error('Error con este ID, intentando otro...', error);
-        setTimeout(() => intentarObra(idsBarajados, indice + 1), 200);
-    })
+        })
 }
 
 function mostrarObra(obra) {
@@ -91,30 +91,85 @@ function cargarDepartamentos() {
                 boton.dataset.id = departamento.departmentId;
                 document.getElementById('lista-departamentos').appendChild(boton);
                 boton.addEventListener('click', function () {
-                    const idDepartamento = boton.dataset.id;
-                    cargarObrasPorDepartamento(idDepartamento);
+                    cargarObrasPorDepartamento(boton.dataset.id, departamento.displayName);
                 });
             });
         })
         .catch(error => console.error('Error al cargar los departamentos:', error));
 }
 
-function cargarObrasPorDepartamento(idDepartamento) {
+function cargarObrasPorDepartamento(idDepartamento, nombreDepartamento) {
     document.body.style.backgroundColor = coloresDepartamentos[idDepartamento];
+    document.getElementById('departamento-titulo').textContent = nombreDepartamento;
+    mostrarVista('departamento');
+
     fetch(ApiUrl + '/objects?departmentIds=' + idDepartamento)
         .then(response => response.json())
         .then(data => {
             idsGlobales = data.objectIDs;
-            obtenerObraValida(idsGlobales);
+            const idsBarajados = mezclarArray(idsGlobales);
+            cargarMiniaturas(idsBarajados, 0, []);
         })
         .catch(error => {
             console.error('Error al cargar las obras del departamento:', error);
         })
-
-
 }
+
+function mostrarVista(vista){
+    document.getElementById('vista-departamento').hidden = (vista !== 'departamento');
+    document.getElementById('vista-exposicion').hidden = (vista !== 'exposicion');
+}
+
+function cargarMiniaturas (idsBarajados, indice, miniaturas){
+    const maximo = 18;
+
+    if (miniaturas.length >= maximo || indice >= idsBarajados.length){
+        mostrarMiniaturas(miniaturas);
+        return;
+    }
+
+    const idObra = idsBarajados[indice];
+
+    fetch (ApiUrl + '/objects/' + idObra)
+    .then (response => response.json())
+    .then(obra => {
+        if (obra.primaryImageSmall !== ''){
+            miniaturas.push(obra);
+        }
+        setTimeout(() => cargarMiniaturas(idsBarajados, indice+1, miniaturas),200);
+    })
+    .catch(error => {
+        console.error('Error con esta miniatura, intentando otra...', error);
+        setTimeout(() => cargarMiniaturas(idsBarajados, indice + 1, miniaturas), 200);
+    });
+}
+
+function mostrarMiniaturas(miniaturas){
+    const grid = document.getElementById('grid-miniaturas');
+    grid.innerHTML = '';
+
+    miniaturas.forEach(obra => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const img = document.createElement('img');
+        img.src = obra.primaryImageSmall;
+        img.alt = obra.title;
+
+        card.appendChild(img);
+        grid.appendChild(card);
+    });
+}
+
 iniciar();
 
 document.getElementById('btn-siguiente').addEventListener('click', function () {
     obtenerObraValida(idsGlobales);
+});
+document.getElementById('btn-comenzar-expo').addEventListener('click', function () {
+    mostrarVista('exposicion');
+    obtenerObraValida(idsGlobales);
+});
+document.getElementById('btn-toggle-sidebar').addEventListener('click', function (){
+    document.getElementById('barra-lateral').classList.toggle('oculta');
 });
