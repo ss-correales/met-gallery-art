@@ -67,16 +67,6 @@ nav {
     display: block;
 }
 
-#barra-lateral {
-    width: 200px;
-    height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    padding-top: 45px;
-    background: transparent;
-}
-
 #lista-departamentos button {
     width: 100%;
     padding: 10px;
@@ -110,7 +100,7 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
+    gap: 5px;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -122,26 +112,21 @@ nav {
 }
 
 #grid-miniaturas {
-    columns: 4;
-    column-gap: 20px;
-    column-fill: balance;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     width: 100%;
-    flex: 1;
-    overflow: hidden;
 }
 
 .card {
-    break-inside: avoid;
-    margin-bottom: 20px;
     overflow: hidden;
 }
 
 .card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
-    filter: blur(2px) grayscale(50%);
+    filter: blur(5px) grayscale(50%);
     transition: filter 0.4s ease, transform 0.3s ease;
 }
 
@@ -179,10 +164,6 @@ nav {
 }
 
 #barra-lateral {
-    transition: width 0.3s ease, opacity 0.3s ease;
-}
-
-#barra-lateral {
     width: 200px;
     height: 100vh;
     overflow-y: auto;
@@ -190,6 +171,7 @@ nav {
     flex-direction: column;
     padding-top: 45px;
     background-color: rgba(0, 0, 0, 0.06);
+    transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 #obra-info {
@@ -243,4 +225,10 @@ nav {
     flex-shrink: 0;
     margin: 0;
     padding-top: 4px;
+}
+
+#btn-siguiente:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    border-color: rgba(0, 0, 0, 0.35);
 }

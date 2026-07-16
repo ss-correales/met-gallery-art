@@ -2,25 +2,25 @@
 const ApiUrl = 'https://collectionapi.metmuseum.org/public/collection/v1';
 let idsGlobales = [];
 const coloresDepartamentos = {
-    1: '#f2e8d8', // American Decorative Arts - crema
-    3: '#e8dcc0', // Ancient West Asian Art - arena
-    4: '#c8c0b0', // Arms and Armor - greige
-    5: '#c0a888', // Arts of Africa, Oceania - tierra
-    6: '#d0b898', // Asian Art - nuez cálido
-    7: '#a89888', // The Cloisters - topo
-    8: '#f0d8c8', // The Costume Institute - nude
-    9: '#e0d8c8', // Drawings and Prints - lino
-    10: '#d8c090', // Egyptian Art - camel dorado
-    11: '#f0e8d8', // European Paintings - marfil
-    12: '#e8e0d0', // European Sculpture - crudo
-    13: '#f4f0e4', // Greek and Roman Art - hueso
-    14: '#eed8b0', // Islamic Art - champagne
-    15: '#c8b898', // Robert Lehman - beige clásico
-    16: '#d8cdb8', // The Libraries - papel
-    17: '#b89870', // Medieval Art - tostado
-    18: '#d4b888', // Musical Instruments - madera
-    19: '#d0c8b8', // Photographs - lino gris
-    21: '#d8d0a0'  // Modern Art - caqui
+    1:  '#f2ece0', // American Decorative Arts
+    3:  '#ede8d6', // Ancient West Asian Art
+    4:  '#eceae4', // Arms and Armor
+    5:  '#ede8dc', // Arts of Africa, Oceania
+    6:  '#eee8da', // Asian Art
+    7:  '#eae6e0', // The Cloisters
+    8:  '#f2e8e0', // The Costume Institute
+    9:  '#edeae2', // Drawings and Prints
+    10: '#f0ecca', // Egyptian Art
+    11: '#f2ede4', // European Paintings
+    12: '#edeae2', // European Sculpture
+    13: '#f5f2e8', // Greek and Roman Art
+    14: '#f0edcc', // Islamic Art
+    15: '#eceae2', // Robert Lehman
+    16: '#eeece4', // The Libraries
+    17: '#ede8d8', // Medieval Art
+    18: '#f0ecd6', // Musical Instruments
+    19: '#eceae6', // Photographs
+    21: '#f0ede0'  // Modern Art
 };
 
 function iniciar() {
