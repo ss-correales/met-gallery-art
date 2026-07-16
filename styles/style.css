@@ -1,8 +1,12 @@
+:root {
+    --color-fondo: #ffffff;
+}
+
 body {
     font-family: 'Cormorant Garamond', serif;
     margin: 0;
     padding: 10;
-    background-color: #ffffff;
+    background-color: var(--color-fondo);
     transition: background-color 0.8s ease;
 }
 
@@ -112,14 +116,16 @@ nav {
 }
 
 #grid-miniaturas {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    columns: 4;
+    column-gap: 16px;
     width: 100%;
+    flex: 1;
+    overflow: hidden;
 }
 
 .card {
-    overflow: hidden;
+    break-inside: avoid;
+    margin-bottom: 16px;
 }
 
 .card img {
