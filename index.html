@@ -25,19 +25,25 @@
         <section id="vista-departamento" hidden>
             <h2 id="departamento-titulo"></h2>
             <div id="grid-miniaturas"></div>
-            <button id="btn-comenzar-expo">Comenzar exposición</button>
+            <button id="btn-comenzar-expo" hidden>Comenzar exposición</button>
         </section>
 
         <section id="vista-exposicion">
             <p id="obra-mensaje"></p>
-            <div id="obra-imagen-contenedor">
-                <img id="obra-imagen" src="" alt="">
-            </div>
-            <div id="obra-info">
-                <p id="obra-titulo"></p>
-                <p id="obra-artista"></p>
-                <p id="obra-fecha"></p>
-                <p id="obra-tecnica"></p>
+            <div id="obra-contenido">
+                <div id="obra-imagen-contenedor">
+                    <img id="obra-imagen" src="" alt="">
+                </div>
+                <dl id="obra-info">
+                    <dt>Título</dt>
+                    <dd id="obra-titulo"></dd>
+                    <dt>Artista</dt>
+                    <dd id="obra-artista"></dd>
+                    <dt>Fecha</dt>
+                    <dd id="obra-fecha"></dd>
+                    <dt>Técnica</dt>
+                    <dd id="obra-tecnica"></dd>
+                </dl>
             </div>
             <button id="btn-siguiente">Siguiente obra</button>
         </section>

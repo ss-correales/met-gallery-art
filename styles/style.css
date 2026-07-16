@@ -5,6 +5,15 @@ body {
     background-color: #ffffff;
     transition: background-color 0.8s ease;
 }
+
+button {
+    font-family: inherit;
+}
+
+[hidden] {
+    display: none !important;
+}
+
 .main {
     display: flex;
     flex-direction: row;
@@ -39,22 +48,23 @@ button[type="submit"]:hover {
 }
 
 nav {
-    background-color: #fffce8;
-    color: white;
+    background-color: transparent;
+    color: inherit;
     padding: 10px;
     margin: 0px;
-    text-align: center;
+    text-align: left;
 }
 
-#obra-imagen-contenedor{
-    width: 600px;
-    height: 500px;
+#obra-imagen-contenedor {
+    max-width: 700px;
 }
 
 #obra-imagen {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 75vh;
+    width: auto;
+    height: auto;
+    display: block;
 }
 
 #barra-lateral {
@@ -63,6 +73,8 @@ nav {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    padding-top: 45px;
+    background: transparent;
 }
 
 #lista-departamentos button {
@@ -72,19 +84,35 @@ nav {
     border: none;
     cursor: pointer;
     background: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
 }
 
-#vista-exposicion{
-    flex:1;
+#lista-departamentos button:hover {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
-#vista-departamento{
+#vista-exposicion {
     flex: 1;
-    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding: 40px 60px;
     gap: 30px;
+    overflow-y: auto;
+}
+
+#vista-departamento {
+    flex: 1;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 #departamento-titulo {
@@ -94,31 +122,36 @@ nav {
 }
 
 #grid-miniaturas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    columns: 4;
+    column-gap: 20px;
+    column-fill: balance;
     width: 100%;
-    max-width: 700px;
+    flex: 1;
+    overflow: hidden;
 }
 
 .card {
-    aspect-ratio: 1;
+    break-inside: avoid;
+    margin-bottom: 20px;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transfor 0.3s ease;
+    display: block;
+    filter: blur(2px) grayscale(50%);
+    transition: filter 0.4s ease, transform 0.3s ease;
 }
 
 .card:hover img {
-    transform: scale(1.05);
+    filter: blur(0) grayscale(0%);
+    transform: scale(1.03);
 }
 
 #btn-comenzar-expo{
+    align-self: center;
     padding: 12px 30px;
     border: 1px solid #000;
     background: none;
@@ -149,9 +182,65 @@ nav {
     transition: width 0.3s ease, opacity 0.3s ease;
 }
 
-#barra-lateral.oculta {
-    width: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0;
+#barra-lateral {
+    width: 200px;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 45px;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+#obra-info {
+    width: 200px;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 20px 24px;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+}
+
+#obra-info dt {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-top: 12px;
+}
+
+#obra-info dd {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#btn-siguiente {
+    align-self: flex-end;
+    margin-top: 24px;
+    padding: 12px 30px;
+    border: 1px solid #000;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#btn-siguiente:hover {
+    background-color: #000;
+    color: #fff;
+}
+#obra-contenido {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+#obra-info {
+    width: 200px;
+    flex-shrink: 0;
+    margin: 0;
+    padding-top: 4px;
 }

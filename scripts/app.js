@@ -2,25 +2,25 @@
 const ApiUrl = 'https://collectionapi.metmuseum.org/public/collection/v1';
 let idsGlobales = [];
 const coloresDepartamentos = {
-    1: '#f5e6d3', // American Decorative Arts - crema cálido
-    3: '#d4c5a9', // Ancient Near Eastern Art - arena
-    4: '#8b9eb7', // Arms and Armor - acero azulado
-    5: '#7a9e7e', // Arts of Africa, Oceania Americas - verde tierra
-    6: '#c17f5a', // Asian Art - terracota
-    7: '#6b7c6e', // The Cloisters - piedra musgo
-    8: '#c4a4b0', // The Costume Institute - rosa polvoso
-    9: '#b5b5b5', // Drawings and Prints - gris neutro
-    10: '#c8a96e', // Egyptian Art - dorado arena
-    11: '#8b7355', // European Paintings - marrón cálido
-    12: '#9e9e8e', // European Sculpture - gris piedra
-    13: '#d4c5a9', // Greek and Roman Art - mármol
-    14: '#7a8c6e', // Islamic Art - verde salvia
-    15: '#c4956a', // Robert Lehman - ámbar
-    16: '#8b9eb7', // The Libraries - azul tinta
-    17: '#6b7c6e', // Medieval Art - gris verdoso
-    18: '#c4a882', // Musical Instruments - madera
-    19: '#9e8e8e', // Photographs - gris fotográfico
-    21: '#7a7a8c'  // Modern Art - gris violáceo
+    1: '#f2e8d8', // American Decorative Arts - crema
+    3: '#e8dcc0', // Ancient West Asian Art - arena
+    4: '#c8c0b0', // Arms and Armor - greige
+    5: '#c0a888', // Arts of Africa, Oceania - tierra
+    6: '#d0b898', // Asian Art - nuez cálido
+    7: '#a89888', // The Cloisters - topo
+    8: '#f0d8c8', // The Costume Institute - nude
+    9: '#e0d8c8', // Drawings and Prints - lino
+    10: '#d8c090', // Egyptian Art - camel dorado
+    11: '#f0e8d8', // European Paintings - marfil
+    12: '#e8e0d0', // European Sculpture - crudo
+    13: '#f4f0e4', // Greek and Roman Art - hueso
+    14: '#eed8b0', // Islamic Art - champagne
+    15: '#c8b898', // Robert Lehman - beige clásico
+    16: '#d8cdb8', // The Libraries - papel
+    17: '#b89870', // Medieval Art - tostado
+    18: '#d4b888', // Musical Instruments - madera
+    19: '#d0c8b8', // Photographs - lino gris
+    21: '#d8d0a0'  // Modern Art - caqui
 };
 
 function iniciar() {
@@ -124,7 +124,7 @@ function mostrarVista(vista){
 }
 
 function cargarMiniaturas (idsBarajados, indice, miniaturas){
-    const maximo = 18;
+    const maximo = 12;
 
     if (miniaturas.length >= maximo || indice >= idsBarajados.length){
         mostrarMiniaturas(miniaturas);
@@ -147,7 +147,7 @@ function cargarMiniaturas (idsBarajados, indice, miniaturas){
     });
 }
 
-function mostrarMiniaturas(miniaturas){
+function mostrarMiniaturas(miniaturas) {
     const grid = document.getElementById('grid-miniaturas');
     grid.innerHTML = '';
 
@@ -162,6 +162,8 @@ function mostrarMiniaturas(miniaturas){
         card.appendChild(img);
         grid.appendChild(card);
     });
+
+    document.getElementById('btn-comenzar-expo').hidden = false;
 }
 
 iniciar();
