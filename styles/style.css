@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 10;
     background-color: #ffffff;
+    transition: background-color 0.8s ease;
 }
 .main {
     display: flex;

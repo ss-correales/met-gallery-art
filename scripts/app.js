@@ -46,6 +46,7 @@ function mezclarArray(array) {
 }
 
 function obtenerObraValida(ids) {
+    document.getElementById('obra-mensaje').textContent = 'Buscando obra...';
     const idsBarajados = mezclarArray(ids);
     intentarObra(idsBarajados, 0);
 }
@@ -74,6 +75,8 @@ function intentarObra(idsBarajados, indice) {
 }
 
 function mostrarObra(obra) {
+    document.getElementById('obra-mensaje').textContent = '';
+    document.getElementById('btn-siguiente').disabled = false;
     document.getElementById('obra-imagen').src = obra.primaryImage;
     document.getElementById('obra-titulo').textContent = obra.title;
     document.getElementById('obra-artista').textContent = obra.artistDisplayName;
@@ -164,6 +167,7 @@ function mostrarMiniaturas(miniaturas){
 iniciar();
 
 document.getElementById('btn-siguiente').addEventListener('click', function () {
+    this.disabled = true;
     obtenerObraValida(idsGlobales);
 });
 document.getElementById('btn-comenzar-expo').addEventListener('click', function () {
